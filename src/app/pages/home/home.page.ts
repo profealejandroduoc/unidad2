@@ -17,17 +17,24 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     //HAY QUE CAMBIARLO AL ONINIT EN VERSION 7
-    //let usuario=this.router.getCurrentNavigation()?.extras.state;
+    
+
 
   }
 
 
 
   ngOnInit() {
-  // console.log(history.state.credenciales);
-    // console.log("EL USUARIO")
+    let datos=this.router.getCurrentNavigation()?.extras.state;
 
-     // console.log(this.usuario_activo.email);
+    if(datos!==undefined){
+      let usr=datos["credenciales"]
+      this.usuario_activo.email=usr.email
+      this.usuario_activo.password=usr.password;
+      
+      let mensaje=datos["saludo"]
+      console.log(mensaje)
+    }
     
   }
 

@@ -25,6 +25,7 @@ export class LoginPage implements OnInit {
       let ext:NavigationExtras={
         state:{
           credenciales:this.usuario,
+          saludo:"Hola mundo!!!",
           
         }
       }
