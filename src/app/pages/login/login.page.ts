@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Usuario } from '../../interfaces/usuario';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
     email:'',
     password:''
   }
-  constructor(private router:Router) { }
+  constructor(private router:Router, private storage: Storage) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,7 @@ export class LoginPage implements OnInit {
   onSubmit(){
     if(this.usuario.email=="waco@waco.cl" && this.usuario.password=="123")
     {
+      this.activar(1);
       //console.log("Listo!!!!");
       let ext:NavigationExtras={
         state:{
@@ -35,6 +37,16 @@ export class LoginPage implements OnInit {
     }
     else{
       console.log("No autorizado");
+      this.activar(0);
     }
   }
+
+
+  async activar(valor:Number)
+  {
+    await this.storage.set("sesion",valor);
+  }
+
+
+
 }

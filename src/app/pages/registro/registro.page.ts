@@ -24,6 +24,7 @@ export class RegistroPage implements OnInit {
   {
     //await this.storage.set('name', 'Mr. Ionitron');
     await this.storage.set(this.usuario.email,this.usuario);
+   
     this.obtenerUsuario();
   }
 
